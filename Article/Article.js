@@ -113,69 +113,54 @@ const data = [
 
 */
 
-const artComponent = (titleText, contentText1, contentText2,contentText3,contentText4) => {
-
-  const articleClass = document.createElement('div');
-  articleClass.classList.add('article');
+function createComponent (titleContent, dateContent, content1, content2, content3 ){
 
 
-  const title = document.createElement('h2');
-  title.textContent = titleText
+  const article = document.createElement('div');//parent
+  article.classList.add('article');
+  
+ 
+  const title = document.createElement('h3');
+  title.textContent = titleContent;
+  
+  const date = document.createElement('p');
+  date.classList.add('date');
+  date.textContent = dateContent;
+  
+  const firstP = document.createElement('p');
+  firstP.textContent = content1;
 
-  const dateP = document.createElement('p');
-  dateP.classList.add('date');
-  dateP.textContent = contentText1
+  const secondP = document.createElement('p');
+  secondP.textContent = content2;
 
-  const para1 = document.createElement('p');
-  para1.textContent = contentText2;
+  const thirdP = document.createElement('p');
+  thirdP.textContent = content3;
 
-  const para1 = document.createElement('p');
-  para1.textContent = contentText3;
+ const btn = document.createElement('span');
+ btn.classList.add('expandButton');
 
-  const para1 = document.createElement('p');
-  para1.textContent = contentText4;
-//
- // const buttonToggler = (event) => {
-  //  openButton.classList.toggle('hide-btn');
-  //  closeButton.classList.toggle('hide-btn');
-   // panelContent.classList.toggle('toggle-on');
-//  }
+ //const buttonClose = document.createElement('span');
 
-  //const panelButtons = document.createElement('div');
-  //panelButtons.classList.add('panel-buttons');
- // panelButtons.addEventListener('click', buttonToggler )
+  //setup structure of elements
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(firstP);
+  article.appendChild(secondP);
+  article.appendChild(thirdP);
+  article.appendChild(btn);
 
 
-  const newButton = document.createElement('span');
-  newButton.classList.add('expandButton');
-  newButton.textContent = '\u25bc';
-  //newButton.addEventListener('click', buttonToggler)
 
 
-  //openButton.classList.add('panel-btn-open');
-  //openButton.textContent = '\u25bc';
 
- // const closeButton = document.createElement('button');
-  //closeButton.classList.add('panel-btn-close');
- // closeButton.classList.add('hide-btn');
- // closeButton.textContent = '\u25b2';
-
-  articleClass.appendChild(title)
-  //panel.appendChild(panelContent)
-
- // panelBar.appendChild(title);
-  //panelBar.appendChild(panelButtons);
-
- // panelButtons.appendChild(openButton);
-//  panelButtons.appendChild(closeButton);
-//  
-  return artComponent;
+  return article;
 }
 
-const article = document.querySelector('.articles');
+const art = document.querySelector('.articles');
 
-data.forEach((currentItem) => {
-  const newPanel = artComponent(currentItem.title, currentItem.date, currentItem.firstParagraph, currentItem.secondParagraph, 
-    currentItem.thirdParagraph);
-  article.appendChild(newPanel);
+data.forEach((item) => {
+  const newArticle = createComponent(item.title, item.date, item.firstParagraph, 
+    item.secondParagraph, item.thirdParagraph);
+  art.appendChild(newArticle);
 })
+
