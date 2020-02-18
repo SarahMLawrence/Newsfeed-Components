@@ -112,3 +112,70 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const artComponent = (titleText, contentText1, contentText2,contentText3,contentText4) => {
+
+  const articleClass = document.createElement('div');
+  articleClass.classList.add('article');
+
+
+  const title = document.createElement('h2');
+  title.textContent = titleText
+
+  const dateP = document.createElement('p');
+  dateP.classList.add('date');
+  dateP.textContent = contentText1
+
+  const para1 = document.createElement('p');
+  para1.textContent = contentText2;
+
+  const para1 = document.createElement('p');
+  para1.textContent = contentText3;
+
+  const para1 = document.createElement('p');
+  para1.textContent = contentText4;
+//
+ // const buttonToggler = (event) => {
+  //  openButton.classList.toggle('hide-btn');
+  //  closeButton.classList.toggle('hide-btn');
+   // panelContent.classList.toggle('toggle-on');
+//  }
+
+  //const panelButtons = document.createElement('div');
+  //panelButtons.classList.add('panel-buttons');
+ // panelButtons.addEventListener('click', buttonToggler )
+
+
+  const newButton = document.createElement('span');
+  newButton.classList.add('expandButton');
+  newButton.textContent = '\u25bc';
+  //newButton.addEventListener('click', buttonToggler)
+
+
+  //openButton.classList.add('panel-btn-open');
+  //openButton.textContent = '\u25bc';
+
+ // const closeButton = document.createElement('button');
+  //closeButton.classList.add('panel-btn-close');
+ // closeButton.classList.add('hide-btn');
+ // closeButton.textContent = '\u25b2';
+
+  articleClass.appendChild(title)
+  //panel.appendChild(panelContent)
+
+ // panelBar.appendChild(title);
+  //panelBar.appendChild(panelButtons);
+
+ // panelButtons.appendChild(openButton);
+//  panelButtons.appendChild(closeButton);
+//  
+  return artComponent;
+}
+
+const article = document.querySelector('.articles');
+
+data.forEach((currentItem) => {
+  const newPanel = artComponent(currentItem.title, currentItem.date, currentItem.firstParagraph, currentItem.secondParagraph, 
+    currentItem.thirdParagraph);
+  article.appendChild(newPanel);
+})
