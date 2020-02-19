@@ -136,10 +136,26 @@ function createComponent (titleContent, dateContent, content1, content2, content
   const thirdP = document.createElement('p');
   thirdP.textContent = content3;
 
- const btn = document.createElement('span');
- btn.classList.add('expandButton');
+  const buttonToggler = (event) => {
+    openButton.classList.toggle('expandButton');
+    closeButton.classList.toggle('expandButton');
+    article.classList.toggle('article-open');
+  }
 
- //const buttonClose = document.createElement('span');
+  const articleButtons = document.createElement('span');
+  articleButtons.classList.add('expandButton');
+  articleButtons.addEventListener('click', buttonToggler )
+
+
+  const openButton = document.createElement('button');
+  openButton.classList.add('article-open');
+  openButton.textContent = '\u25bc';
+
+  const closeButton = document.createElement('button');
+  closeButton.classList.add('article-open');
+  closeButton.textContent = '\u25bc';
+  
+
 
   //setup structure of elements
   article.appendChild(title);
@@ -147,9 +163,8 @@ function createComponent (titleContent, dateContent, content1, content2, content
   article.appendChild(firstP);
   article.appendChild(secondP);
   article.appendChild(thirdP);
-  article.appendChild(btn);
-
-
+  article.appendChild(articleButtons);
+  articleButtons.appendChild(openButton);
 
 
 
